@@ -38,6 +38,9 @@
     </a-row>
     <a-row :gutter="8" class="count-info">
       <a-col :span="12" class="visit-count-wrapper">
+        <a-card title="进入我的主页" class="project-card">
+          <a href="http://www.shopbop.ink/" target="_blank" slot="extra">http://www.shopbop.ink/</a>
+        </a-card>
         <a-card class="visit-count">
           <apexchart ref="count" type=bar height=300 :options="chartOptions" :series="series" />
         </a-card>

@@ -37,85 +37,85 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class LogAspect {
 
-    @Autowired
-    private FebsProperties febsProperties;
+  @Autowired
+  private FebsProperties febsProperties;
 
-    @Autowired
-    private LogService logService;
+  @Autowired
+  private LogService logService;
 
-    @Pointcut("@annotation(cc.mrbird.febs.common.annotation.Log)")
-    public void pointcut() {
-        // do nothing
+  @Pointcut("@annotation(cc.mrbird.febs.common.annotation.Log)")
+  public void pointcut() {
+    // do nothing
+  }
+
+  @Around("pointcut()")
+  public Object around(ProceedingJoinPoint point) throws Throwable {
+    Object result = null;
+    long beginTime = System.currentTimeMillis();
+    // 执行方法
+    result = point.proceed();
+    // 获取 request
+    HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
+    // 设置 IP 地址
+    String ip = IPUtil.getIpAddr(request);
+    // 执行时长(毫秒)
+    long time = System.currentTimeMillis() - beginTime;
+    if (febsProperties.isOpenAopLog()) {
+      // 保存日志
+      String token = (String) SecurityUtils.getSubject().getPrincipal();
+      String username = "";
+      if (StringUtils.isNotBlank(token)) {
+        username = JWTUtil.getUsername(token);
+      }
+
+      SysLog log = new SysLog();
+      log.setUsername(StringUtils.isBlank(username) ? "unknown" : username);
+      log.setIp(ip);
+      log.setTime(time);
+
+      log.setPath(request.getRequestURI());
+      //
+      String agentStr = request.getHeader("user-agent");
+      UserAgent agent = UserAgent.parseUserAgentString(agentStr);
+      // 浏览器
+      Browser browser = agent.getBrowser();
+      // 浏览器版本
+      Version version = agent.getBrowserVersion() == null ? new Version("未知", "未知", "未知") : agent.getBrowserVersion();
+      // 系统
+      OperatingSystem os = agent.getOperatingSystem();
+      /**
+       * 保存字段
+       */
+      // 浏览器类型
+      BrowserType browserType = browser.getBrowserType();
+      // 浏览器名称和版本
+      String browserAndVersion = String.format("%s-%s", browser.getGroup().getName(), version.getVersion());
+      // 浏览器厂商
+      Manufacturer manufacturer = browser.getManufacturer();
+      // 浏览器引擎
+      RenderingEngine renderingEngine = browser.getRenderingEngine();
+      // 系统名称
+      String sysName = os.getName();
+      // 产品系列
+      OperatingSystem operatingSystem = os.getGroup();
+      // 生成厂商
+      Manufacturer sysManufacturer = os.getManufacturer();
+      // 设备类型
+      DeviceType deviceType = os.getDeviceType();
+
+      // 浏览器信息
+      log.setUserAgent(agentStr);
+      log.setBrowserAndVersion(browserAndVersion);
+      log.setBrowserType(browserType.name());
+      log.setManufacturer(manufacturer.name());
+      log.setRenderingEngine(renderingEngine.name());
+      log.setSysName(sysName);
+      log.setOperatingSystem(operatingSystem.name());
+      log.setSysManufacturer(sysManufacturer.name());
+      log.setDeviceType(deviceType.name());
+
+      logService.saveLog(point, log);
     }
-
-    @Around("pointcut()")
-    public Object around(ProceedingJoinPoint point) throws Throwable {
-        Object result = null;
-        long beginTime = System.currentTimeMillis();
-        // 执行方法
-        result = point.proceed();
-        // 获取 request
-        HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
-        // 设置 IP 地址
-        String ip = IPUtil.getIpAddr(request);
-        // 执行时长(毫秒)
-        long time = System.currentTimeMillis() - beginTime;
-        if (febsProperties.isOpenAopLog()) {
-            // 保存日志
-            String token = (String) SecurityUtils.getSubject().getPrincipal();
-            String username = "";
-            if (StringUtils.isNotBlank(token)) {
-                username = JWTUtil.getUsername(token);
-            }
-
-            SysLog log = new SysLog();
-            log.setUsername(username);
-            log.setIp(ip);
-            log.setTime(time);
-
-            log.setPath(request.getRequestURI());
-            //
-            String agentStr = request.getHeader("user-agent");
-            UserAgent agent = UserAgent.parseUserAgentString(agentStr);
-            // 浏览器
-            Browser browser = agent.getBrowser();
-            // 浏览器版本
-            Version version = agent.getBrowserVersion() == null ? new Version("未知", "未知", "未知") : agent.getBrowserVersion();
-            // 系统
-            OperatingSystem os = agent.getOperatingSystem();
-            /**
-             * 保存字段
-             */
-            // 浏览器类型
-            BrowserType browserType = browser.getBrowserType();
-            // 浏览器名称和版本
-            String browserAndVersion = String.format("%s-%s", browser.getGroup().getName(), version.getVersion());
-            // 浏览器厂商
-            Manufacturer manufacturer = browser.getManufacturer();
-            // 浏览器引擎
-            RenderingEngine renderingEngine = browser.getRenderingEngine();
-            // 系统名称
-            String sysName = os.getName();
-            // 产品系列
-            OperatingSystem operatingSystem = os.getGroup();
-            // 生成厂商
-            Manufacturer sysManufacturer = os.getManufacturer();
-            // 设备类型
-            DeviceType deviceType = os.getDeviceType();
-
-            // 浏览器信息
-            log.setUserAgent(agentStr);
-            log.setBrowserAndVersion(browserAndVersion);
-            log.setBrowserType(browserType.name());
-            log.setManufacturer(manufacturer.name());
-            log.setRenderingEngine(renderingEngine.name());
-            log.setSysName(sysName);
-            log.setOperatingSystem(operatingSystem.name());
-            log.setSysManufacturer(sysManufacturer.name());
-            log.setDeviceType(deviceType.name());
-
-            logService.saveLog(point, log);
-        }
-        return result;
-    }
+    return result;
+  }
 }
