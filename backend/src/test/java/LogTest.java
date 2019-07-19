@@ -1,4 +1,4 @@
-import cc.mrbird.febs.FebsApplication;
+import cc.mrbird.febs.ResumeBootApplication;
 import cc.mrbird.febs.common.utils.MD5Util;
 import cc.mrbird.febs.system.domain.User;
 import cc.mrbird.febs.system.service.UserService;
@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {FebsApplication.class})
+@SpringBootTest(classes = {ResumeBootApplication.class})
 @Slf4j
 public class LogTest {
 

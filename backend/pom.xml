@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cc.mrbird</groupId>
-    <artifactId>febs_shiro_jwt</artifactId>
+    <artifactId>resume-boot</artifactId>
     <version>1.0.0-release</version>
     <packaging>jar</packaging>
 
-    <name>febs_shiro_jwt</name>
+    <name>resume-boot</name>
     <description>FEBS_Shrio_JWT</description>
 
     <parent>
