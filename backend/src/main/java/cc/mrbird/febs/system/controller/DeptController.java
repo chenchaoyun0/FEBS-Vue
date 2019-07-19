@@ -76,6 +76,7 @@ public class DeptController extends BaseController {
         }
     }
 
+    @Log
     @PostMapping("excel")
     @RequiresPermissions("dept:export")
     public void export(Dept dept, QueryRequest request, HttpServletResponse response) throws FebsException {

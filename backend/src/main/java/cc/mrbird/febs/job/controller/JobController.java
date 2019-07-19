@@ -32,12 +32,13 @@ public class JobController extends BaseController {
     @Autowired
     private JobService jobService;
 
+    @Log("任务列表")
     @GetMapping
     @RequiresPermissions("job:view")
     public Map<String, Object> jobList(QueryRequest request, Job job) {
         return getDataTable(this.jobService.findJobs(request, job));
     }
-
+    @Log
     @GetMapping("cron/check")
     public boolean checkCron(String cron) {
         try {
@@ -126,6 +127,7 @@ public class JobController extends BaseController {
         }
     }
 
+    @Log("任务列表")
     @PostMapping("excel")
     @RequiresPermissions("job:export")
     public void export(QueryRequest request, Job job, HttpServletResponse response) throws FebsException {

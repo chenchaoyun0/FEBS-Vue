@@ -1,5 +1,6 @@
 package cc.mrbird.febs.web.controller;
 
+import cc.mrbird.febs.common.annotation.Log;
 import cc.mrbird.febs.common.domain.FebsConstant;
 import cc.mrbird.febs.common.domain.FebsResponse;
 import cc.mrbird.febs.common.exception.FebsException;
@@ -20,6 +21,7 @@ public class MovieController {
 
     private String message;
 
+    @Log
     @GetMapping("hot")
     public FebsResponse getMoiveHot() throws FebsException {
         try {
@@ -32,6 +34,7 @@ public class MovieController {
         }
     }
 
+    @Log
     @GetMapping("coming")
     public FebsResponse getMovieComing() throws FebsException {
         try {
@@ -44,6 +47,7 @@ public class MovieController {
         }
     }
 
+    @Log
     @GetMapping("detail")
     public FebsResponse getDetail(@NotBlank(message = "{required}") String id) throws FebsException {
         try {
@@ -56,6 +60,7 @@ public class MovieController {
         }
     }
 
+    @Log
     @GetMapping("comments")
     public FebsResponse getComments(@NotBlank(message = "{required}") String id) throws FebsException {
         try {

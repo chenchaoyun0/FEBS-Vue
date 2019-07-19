@@ -30,6 +30,7 @@ public class LogController extends BaseController {
     @Autowired
     private LogService logService;
 
+    @Log
     @GetMapping
     @RequiresPermissions("log:view")
     public Map<String, Object> logList(QueryRequest request, SysLog sysLog) {
@@ -50,6 +51,7 @@ public class LogController extends BaseController {
         }
     }
 
+    @Log
     @PostMapping("excel")
     @RequiresPermissions("log:export")
     public void export(QueryRequest request, SysLog sysLog, HttpServletResponse response) throws FebsException {

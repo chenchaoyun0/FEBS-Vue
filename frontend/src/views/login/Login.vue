@@ -9,14 +9,14 @@
           <a-form-item
             fieldDecoratorId="name"
             >
-            <a-input size="large" placeholder="scott" v-model="defaultUserName" @input="$emit('input',$event.target.value)">
+            <a-input size="large" placeholder="chenchaoyun" v-model="defaultUserName" @input="$emit('input',$event.target.value)">
               <a-icon slot="prefix" type="user"></a-icon>
             </a-input>
           </a-form-item>
           <a-form-item
             fieldDecoratorId="password"
             >
-            <a-input size="large" type="password" placeholder="ccy@123" v-model="defaultPassword" @input="$emit('input',$event.target.value)">
+            <a-input size="large" type="password" placeholder="123456" v-model="defaultPassword" @input="$emit('input',$event.target.value)">
               <a-icon slot="prefix" type="lock"></a-icon>
             </a-input>
           </a-form-item>
@@ -63,8 +63,8 @@ export default {
       loading: false,
       error: '',
       activeKey: '1',
-      defaultPassword: 'ccy@123',
-      defaultUserName: 'scott'
+      defaultPassword: '123456',
+      defaultUserName: 'chenchaoyun'
     }
   },
   computed: {

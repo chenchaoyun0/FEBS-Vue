@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class="copyright">
-      Copyright
+     Thanks for wuyouzhuguli, Copyright
       <a-icon type="copyright"/>
       <span v-html="copyright"></span>
     </div>

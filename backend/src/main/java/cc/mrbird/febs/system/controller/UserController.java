@@ -37,11 +37,13 @@ public class UserController extends BaseController {
     @Autowired
     private UserConfigService userConfigService;
 
+    @Log
     @GetMapping("check/{username}")
     public boolean checkUserName(@NotBlank(message = "{required}") @PathVariable String username) {
         return this.userService.findByName(username) == null;
     }
 
+    @Log
     @GetMapping("/{username}")
     public User detail(@NotBlank(message = "{required}") @PathVariable String username) {
         return this.userService.findByName(username);
@@ -93,6 +95,7 @@ public class UserController extends BaseController {
         }
     }
 
+    @Log
     @PutMapping("profile")
     public void updateProfile(@Valid User user) throws FebsException {
         try {
@@ -104,6 +107,7 @@ public class UserController extends BaseController {
         }
     }
 
+    @Log
     @PutMapping("avatar")
     public void updateAvatar(
             @NotBlank(message = "{required}") String username,
@@ -117,6 +121,7 @@ public class UserController extends BaseController {
         }
     }
 
+    @Log
     @PutMapping("userconfig")
     public void updateUserConfig(@Valid UserConfig userConfig) throws FebsException {
         try {
@@ -128,6 +133,7 @@ public class UserController extends BaseController {
         }
     }
 
+    @Log
     @GetMapping("password/check")
     public boolean checkPassword(
             @NotBlank(message = "{required}") String username,
@@ -140,6 +146,7 @@ public class UserController extends BaseController {
             return false;
     }
 
+    @Log
     @PutMapping("password")
     public void updatePassword(
             @NotBlank(message = "{required}") String username,
@@ -153,6 +160,7 @@ public class UserController extends BaseController {
         }
     }
 
+    @Log
     @PutMapping("password/reset")
     @RequiresPermissions("user:reset")
     public void resetPassword(@NotBlank(message = "{required}") String usernames) throws FebsException {
@@ -166,6 +174,7 @@ public class UserController extends BaseController {
         }
     }
 
+    @Log
     @PostMapping("excel")
     @RequiresPermissions("user:export")
     public void export(QueryRequest queryRequest, User user, HttpServletResponse response) throws FebsException {

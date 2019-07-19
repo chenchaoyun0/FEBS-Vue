@@ -44,7 +44,7 @@
       </a-col>
       <a-col :span="12" class="project-wrapper">
         <a-card title="进行中的项目" class="project-card">
-          <a href="https://github.com/wuyouzhuguli?tab=repositories" target="_blank" slot="extra">所有项目</a>
+          <a href="https://github.com/chenchaoyun0" target="_blank" slot="extra">所有项目</a>
           <table>
             <tr>
               <td>
@@ -116,6 +116,19 @@
                   </div>
                 </div>
               </td>
+              <td>
+                <div class="project-avatar-wrapper">
+                  <a-avatar class="project-avatar">{{projects[5].avatar}}</a-avatar>
+                </div>
+                <div class="project-detail">
+                  <div class="project-name">
+                    {{projects[5].name}}
+                  </div>
+                  <div class="project-desc">
+                    <p>{{projects[5].des}}</p>
+                  </div>
+                </div>
+              </td>
               <td></td>
             </tr>
           </table>
@@ -166,28 +179,33 @@ export default {
       },
       projects: [
         {
-          name: 'FEBS-Shiro',
-          des: 'Spring Boot 2.0.4 & Shiro1.4.0 权限管理系统。',
+          name: 'hpspider',
+          des: 'Java 爬虫webmagic框架。目的爬取虎扑步行街的数据一些统计与数据分析。',
           avatar: 'F'
         },
         {
-          name: 'FEBS-Security',
-          des: 'Spring Boot 2.0.4 & Spring Security 5.0.7 权限管理系统。',
+          name: 'resume',
+          des: '个人在线简历，访问地址：http://www.shopbop.ink/',
           avatar: 'F'
         },
         {
-          name: 'SpringAll',
-          des: '循序渐进学习Spring Boot、Spring Cloud与Spring Security。',
+          name: 'cloudbook',
+          des: '本项目是由本人另一个项目bookmanager项目，采用Spring Cloud进行重构',
           avatar: 'S'
         },
         {
-          name: 'FEBS-Shiro-Vue',
-          des: 'FEBS-Shiro前后端分离版本，前端架构采用Vue全家桶。',
+          name: 'tbspider',
+          des: '百度贴吧爬虫，适配所有百度贴吧(非https),爬取百度贴吧数据做一些统计与数据分析。',
           avatar: 'F'
         },
         {
-          name: 'FEBS-Actuator',
-          des: '使用Spring Boot Admin 2.0.2构建，用于监控FEBS。',
+          name: 'zkWeb',
+          des: 'zookeeper 节点数据的 web管理系统，改造于阿里巴巴的zkWeb，Springboot项目。',
+          avatar: 'F'
+        },
+        {
+          name: 'kafka-offset-monitor',
+          des: 'kafka监控组件，编译包去除需要Google外网资源，支持内网部署，查看kafka消费进度信息。',
           avatar: 'F'
         }
       ],

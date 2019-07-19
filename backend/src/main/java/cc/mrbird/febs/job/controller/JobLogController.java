@@ -1,5 +1,6 @@
 package cc.mrbird.febs.job.controller;
 
+import cc.mrbird.febs.common.annotation.Log;
 import cc.mrbird.febs.common.controller.BaseController;
 import cc.mrbird.febs.common.domain.QueryRequest;
 import cc.mrbird.febs.common.exception.FebsException;
@@ -29,12 +30,14 @@ public class JobLogController extends BaseController {
     @Autowired
     private JobLogService jobLogService;
 
+    @Log("任务日志列表")
     @GetMapping
     @RequiresPermissions("jobLog:view")
     public Map<String, Object> jobLogList(QueryRequest request, JobLog log) {
         return getDataTable(this.jobLogService.findJobLogs(request, log));
     }
 
+    @Log("删除调度日志")
     @DeleteMapping("/{jobIds}")
     @RequiresPermissions("jobLog:delete")
     public void deleteJobLog(@NotBlank(message = "{required}") @PathVariable String jobIds) throws FebsException {
@@ -48,6 +51,7 @@ public class JobLogController extends BaseController {
         }
     }
 
+    @Log("导出excel")
     @PostMapping("excel")
     @RequiresPermissions("jobLog:export")
     public void export(QueryRequest request, JobLog jobLog, HttpServletResponse response) throws FebsException {

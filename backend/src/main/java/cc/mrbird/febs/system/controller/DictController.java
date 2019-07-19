@@ -31,6 +31,7 @@ public class DictController extends BaseController {
     @Autowired
     private DictService dictService;
 
+    @Log
     @GetMapping
     @RequiresPermissions("dict:view")
     public Map<String, Object> DictList(QueryRequest request, Dict dict) {
@@ -77,6 +78,7 @@ public class DictController extends BaseController {
         }
     }
 
+    @Log
     @PostMapping("excel")
     @RequiresPermissions("dict:export")
     public void export(QueryRequest request, Dict dict, HttpServletResponse response) throws FebsException {

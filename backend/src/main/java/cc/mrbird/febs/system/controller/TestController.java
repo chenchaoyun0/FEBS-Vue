@@ -1,5 +1,6 @@
 package cc.mrbird.febs.system.controller;
 
+import cc.mrbird.febs.common.annotation.Log;
 import cc.mrbird.febs.common.controller.BaseController;
 import cc.mrbird.febs.common.domain.FebsResponse;
 import cc.mrbird.febs.common.domain.QueryRequest;
@@ -44,6 +45,7 @@ public class TestController extends BaseController {
     /**
      * 生成 Excel导入模板
      */
+    @Log
     @PostMapping("template")
     public void generateImportTemplate(HttpServletResponse response) {
         // 构建数据
@@ -62,6 +64,7 @@ public class TestController extends BaseController {
     /**
      * 导入Excel数据，并批量插入 T_TEST表
      */
+    @Log
     @PostMapping("import")
     public FebsResponse importExcels(@RequestParam("file") MultipartFile file) throws FebsException {
         try {
@@ -110,6 +113,7 @@ public class TestController extends BaseController {
     /**
      * 导出 Excel
      */
+    @Log
     @PostMapping("export")
     public void export(HttpServletResponse response) throws FebsException {
         try {

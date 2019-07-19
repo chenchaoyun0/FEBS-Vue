@@ -1,5 +1,6 @@
 package cc.mrbird.febs.system.controller;
 
+import cc.mrbird.febs.common.annotation.Log;
 import cc.mrbird.febs.common.domain.FebsResponse;
 import cc.mrbird.febs.common.domain.RedisInfo;
 import cc.mrbird.febs.common.service.RedisService;
@@ -18,17 +19,20 @@ public class RedisController {
     @Autowired
     private RedisService redisService;
 
+    @Log
     @GetMapping("info")
     public FebsResponse getRedisInfo() throws Exception {
         List<RedisInfo> infoList = this.redisService.getRedisInfo();
         return new FebsResponse().data(infoList);
     }
 
+    @Log
     @GetMapping("keysSize")
     public Map<String, Object> getKeysSize() throws Exception {
         return redisService.getKeysSize();
     }
 
+    @Log
     @GetMapping("memoryInfo")
     public Map<String, Object> getMemoryInfo() throws Exception {
         return redisService.getMemoryInfo();

@@ -1,6 +1,7 @@
 package cc.mrbird.febs.system.controller;
 
 import cc.mrbird.febs.common.annotation.Limit;
+import cc.mrbird.febs.common.annotation.Log;
 import cc.mrbird.febs.common.authentication.JWTToken;
 import cc.mrbird.febs.common.authentication.JWTUtil;
 import cc.mrbird.febs.common.domain.ActiveUser;
@@ -49,6 +50,7 @@ public class LoginController {
     @Autowired
     private ObjectMapper mapper;
 
+    @Log
     @PostMapping("/login")
     @Limit(key = "login", period = 60, count = 20, name = "登录接口", prefix = "limit")
     public FebsResponse login(
@@ -86,6 +88,7 @@ public class LoginController {
         return new FebsResponse().message("认证成功").data(userInfo);
     }
 
+    @Log
     @GetMapping("index/{username}")
     public FebsResponse index(@NotBlank(message = "{required}") @PathVariable String username) {
         Map<String, Object> data = new HashMap<>();
@@ -106,6 +109,7 @@ public class LoginController {
         return new FebsResponse().data(data);
     }
 
+    @Log
     @RequiresPermissions("user:online")
     @GetMapping("online")
     public FebsResponse userOnline(String username) throws Exception {
@@ -125,6 +129,7 @@ public class LoginController {
         return new FebsResponse().data(activeUsers);
     }
 
+    @Log
     @DeleteMapping("kickout/{id}")
     @RequiresPermissions("user:kickout")
     public void kickout(@NotBlank(message = "{required}") @PathVariable String id) throws Exception {
@@ -147,11 +152,13 @@ public class LoginController {
         }
     }
 
+    @Log
     @GetMapping("logout/{id}")
     public void logout(@NotBlank(message = "{required}") @PathVariable String id) throws Exception {
         this.kickout(id);
     }
 
+    @Log
     @PostMapping("regist")
     public void regist(
             @NotBlank(message = "{required}") String username,

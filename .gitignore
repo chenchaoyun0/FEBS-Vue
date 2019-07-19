@@ -1,7 +1,42 @@
-backend/.idea/
-backend/febs_shiro_jwt.iml
-backend/target/
-backend/log/
+# maven ignore
+target/
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# temp ignore
+*/logs/
+log/
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+cache/
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+# pmd
+*.pmd
+/msc/
+
+*.springBeans
+
 
 frontend/.DS_Store
 frontend/node_modules

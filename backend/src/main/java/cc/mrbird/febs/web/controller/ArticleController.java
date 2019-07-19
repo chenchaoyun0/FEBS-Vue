@@ -1,5 +1,6 @@
 package cc.mrbird.febs.web.controller;
 
+import cc.mrbird.febs.common.annotation.Log;
 import cc.mrbird.febs.common.domain.FebsConstant;
 import cc.mrbird.febs.common.domain.FebsResponse;
 import cc.mrbird.febs.common.exception.FebsException;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("article")
 public class ArticleController {
 
+    @Log
     @GetMapping
     @RequiresPermissions("article:view")
     public FebsResponse queryArticle(String date) throws FebsException {

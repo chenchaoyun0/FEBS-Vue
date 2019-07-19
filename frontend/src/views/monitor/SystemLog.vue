@@ -67,7 +67,7 @@
                :pagination="pagination"
                :loading="loading"
                :rowSelection="{selectedRowKeys: selectedRowKeys, onChange: onSelectChange}"
-               @change="handleTableChange" :scroll="{ x: 1400 }">
+               @change="handleTableChange" :scroll="{ x: 1800 }">
         <template slot="method" slot-scope="text, record">
           <a-popover placement="topLeft">
             <template slot="content">
@@ -104,9 +104,9 @@ export default {
       selectedRowKeys: [],
       queryParams: {},
       pagination: {
-        pageSizeOptions: ['10', '20', '30', '40', '100'],
+        pageSizeOptions: ['4', '10', '20', '30', '40', '100'],
         defaultCurrent: 1,
-        defaultPageSize: 10,
+        defaultPageSize: 4,
         showQuickJumper: true,
         showSizeChanger: true,
         showTotal: (total, range) => `显示 ${range[0]} ~ ${range[1]} 条记录，共 ${total} 条记录`
@@ -122,7 +122,7 @@ export default {
         title: '操作人',
         dataIndex: 'username'
       }, {
-        title: '操作描述',
+        title: '描述',
         dataIndex: 'operation'
       }, {
         title: '耗时',
@@ -141,6 +141,30 @@ export default {
         sorter: true,
         sortOrder: sortedInfo.columnKey === 'time' && sortedInfo.order
       }, {
+        title: 'IP地址',
+        dataIndex: 'ip'
+      }, {
+        title: '操作地点',
+        dataIndex: 'location'
+      }, {
+        title: '系统名称',
+        dataIndex: 'sysName'
+      }, {
+        title: '浏览器版本',
+        dataIndex: 'browserAndVersion'
+      }, {
+        title: '设备类型',
+        dataIndex: 'deviceType'
+      }, {
+        title: '操作时间',
+        dataIndex: 'createTime',
+        sorter: true,
+        sortOrder: sortedInfo.columnKey === 'createTime' && sortedInfo.order
+      }, {
+        title: '请求路径',
+        dataIndex: 'path',
+        scopedSlots: { customRender: 'method' }
+      }, {
         title: '执行方法',
         dataIndex: 'method',
         scopedSlots: { customRender: 'method' }
@@ -150,16 +174,9 @@ export default {
         scopedSlots: { customRender: 'params' },
         width: 100
       }, {
-        title: 'IP地址',
-        dataIndex: 'ip'
-      }, {
-        title: '操作地点',
-        dataIndex: 'location'
-      }, {
-        title: '操作时间',
-        dataIndex: 'createTime',
-        sorter: true,
-        sortOrder: sortedInfo.columnKey === 'createTime' && sortedInfo.order
+        title: '请求信息',
+        dataIndex: 'userAgent',
+        scopedSlots: { customRender: 'method' }
       }]
     }
   },

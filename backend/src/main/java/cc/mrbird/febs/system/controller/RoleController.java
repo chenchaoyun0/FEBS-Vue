@@ -42,12 +42,14 @@ public class RoleController extends BaseController {
         return getDataTable(roleService.findRoles(role, queryRequest));
     }
 
+    @Log
     @GetMapping("check/{roleName}")
     public boolean checkRoleName(@NotBlank(message = "{required}") @PathVariable String roleName) {
         Role result = this.roleService.findByName(roleName);
         return result == null;
     }
 
+    @Log
     @GetMapping("menu/{roleId}")
     public List<String> getRoleMenus(@NotBlank(message = "{required}") @PathVariable String roleId) {
         List<RoleMenu> list = this.roleMenuServie.getRoleMenusByRoleId(roleId);
@@ -94,6 +96,7 @@ public class RoleController extends BaseController {
         }
     }
 
+    @Log
     @PostMapping("excel")
     @RequiresPermissions("role:export")
     public void export(QueryRequest queryRequest, Role role, HttpServletResponse response) throws FebsException {

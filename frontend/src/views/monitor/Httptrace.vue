@@ -31,9 +31,9 @@ export default {
       advanced: false,
       dataSource: [],
       pagination: {
-        defaultPageSize: 10,
+        defaultPageSize: 5,
         defaultCurrent: 1,
-        pageSizeOptions: ['10', '20', '30', '40', '100'],
+        pageSizeOptions: ['5', '10', '20', '30', '40', '100'],
         showQuickJumper: true,
         showSizeChanger: true,
         showTotal: (total, range) => `显示 ${range[0]} ~ ${range[1]} 条记录，共 ${total} 条记录`

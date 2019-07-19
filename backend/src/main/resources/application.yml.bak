@@ -64,8 +64,8 @@ management:
       exposure:
         include: "*"
     jmx:
-       exposure:
-         include: "*"
+      exposure:
+        include: "*"
   metrics:
     tags:
       application: ${spring.application.name}
@@ -86,3 +86,14 @@ febs:
     anonUrl: /login,/logout/**,/regist,/user/check/**
     # token有效期，单位秒
     jwtTimeOut: 3600
+
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    max:
+      size: 50MB
+    total:
+      size: 500MB
+      path:
+        suffix: .gz
+  path: ./logs

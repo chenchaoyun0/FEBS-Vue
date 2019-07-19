@@ -1,5 +1,6 @@
 package cc.mrbird.febs.web.controller;
 
+import cc.mrbird.febs.common.annotation.Log;
 import cc.mrbird.febs.common.domain.FebsConstant;
 import cc.mrbird.febs.common.domain.FebsResponse;
 import cc.mrbird.febs.common.exception.FebsException;
@@ -19,6 +20,7 @@ import javax.validation.constraints.NotBlank;
 @RequestMapping("weather")
 public class WeatherController {
 
+    @Log
     @GetMapping
     @RequiresPermissions("weather:view")
     public FebsResponse queryWeather(@NotBlank(message = "{required}") String areaId) throws FebsException {

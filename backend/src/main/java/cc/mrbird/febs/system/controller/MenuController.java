@@ -35,6 +35,7 @@ public class MenuController extends BaseController {
     @Autowired
     private MenuService menuService;
 
+    @Log
     @GetMapping("/{username}")
     public ArrayList<VueRouter<Menu>> getUserRouters(@NotBlank(message = "{required}") @PathVariable String username) {
         return this.userManager.getUserRouters(username);
@@ -86,6 +87,7 @@ public class MenuController extends BaseController {
         }
     }
 
+    @Log
     @PostMapping("excel")
     @RequiresPermissions("menu:export")
     public void export(Menu menu, HttpServletResponse response) throws FebsException {
