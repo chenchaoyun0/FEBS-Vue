@@ -48,4 +48,43 @@ public class SysLog implements Serializable {
     @ExcelField(value = "操作地点")
     private String location;
 
+    //请求路径
+    @ExcelField(value = "请求路径")
+    private String path;
+
+    //浏览器版本
+    @ExcelField(value = "浏览器版本")
+    private String browserType;
+
+    // 浏览器名称和版本
+    @ExcelField(value = "浏览器名称和版本")
+    private String browserAndVersion;
+
+    // 浏览器厂商
+    @ExcelField(value = "浏览器厂商")
+    private String manufacturer;
+
+    // 浏览器引擎
+    @ExcelField(value = "浏览器引擎")
+    private String renderingEngine;
+
+    // 系统名称
+    @ExcelField(value = "系统名称")
+    private String sysName;
+
+    // 产品系列
+    @ExcelField(value = "产品系列")
+    private String operatingSystem;
+
+    // 生成厂商
+    @ExcelField(value = "生成厂商")
+    private String sysManufacturer;
+
+    // 设备类型
+    @ExcelField(value = "设备类型")
+    private String deviceType;
+
+    @ExcelField(value = "请求信息")
+    private String userAgent;
+
 }

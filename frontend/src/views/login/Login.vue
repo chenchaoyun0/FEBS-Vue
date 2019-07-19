@@ -8,15 +8,15 @@
                    style="margin-bottom: 24px;"></a-alert>
           <a-form-item
             fieldDecoratorId="name"
-            :fieldDecoratorOptions="{rules: [{ required: true, message: '请输入账户名', whitespace: true}]}">
-            <a-input size="large">
+            >
+            <a-input size="large" placeholder="scott" v-model="defaultUserName" @input="$emit('input',$event.target.value)">
               <a-icon slot="prefix" type="user"></a-icon>
             </a-input>
           </a-form-item>
           <a-form-item
             fieldDecoratorId="password"
-            :fieldDecoratorOptions="{rules: [{ required: true, message: '请输入密码', whitespace: true}]}">
-            <a-input size="large" type="password">
+            >
+            <a-input size="large" type="password" placeholder="ccy@123" v-model="defaultPassword" @input="$emit('input',$event.target.value)">
               <a-icon slot="prefix" type="lock"></a-icon>
             </a-input>
           </a-form-item>
@@ -62,7 +62,9 @@ export default {
     return {
       loading: false,
       error: '',
-      activeKey: '1'
+      activeKey: '1',
+      defaultPassword: 'ccy@123',
+      defaultUserName: 'scott'
     }
   },
   computed: {
@@ -84,8 +86,8 @@ export default {
         this.form.validateFields(['name', 'password'], (errors, values) => {
           if (!errors) {
             this.loading = true
-            let name = this.form.getFieldValue('name')
-            let password = this.form.getFieldValue('password')
+            let name = this.defaultUserName
+            let password = this.defaultPassword
             this.$post('login', {
               username: name,
               password: password

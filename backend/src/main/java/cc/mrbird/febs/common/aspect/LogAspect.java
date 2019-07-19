@@ -61,6 +61,7 @@ public class LogAspect {
             }
 
             SysLog log = new SysLog();
+            log.setPath(request.getPathInfo());
             log.setUsername(username);
             log.setIp(ip);
             log.setTime(time);
