@@ -16,6 +16,6 @@ public interface LogMapper extends BaseMapper<SysLog> {
   @Select("select count(1) from t_log where path='/log/lookResume'")
   long selectResumeCount();
 
-  @Select("select count(distinct(ip)) from t_login_log")
+  @Select("select count(distinct(ip)) from t_log")
   long selectTotalVisitorCount();
 }

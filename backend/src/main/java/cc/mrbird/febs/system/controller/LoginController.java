@@ -11,6 +11,7 @@ import cc.mrbird.febs.common.exception.FebsException;
 import cc.mrbird.febs.common.properties.FebsProperties;
 import cc.mrbird.febs.common.service.RedisService;
 import cc.mrbird.febs.common.utils.*;
+import cc.mrbird.febs.system.dao.LogMapper;
 import cc.mrbird.febs.system.dao.LoginLogMapper;
 import cc.mrbird.febs.system.domain.LoginLog;
 import cc.mrbird.febs.system.domain.User;
@@ -49,6 +50,9 @@ public class LoginController {
     private FebsProperties properties;
     @Autowired
     private ObjectMapper mapper;
+
+    @Autowired
+    private LogMapper logMapper;
 
     @Log
     @PostMapping("/login")
