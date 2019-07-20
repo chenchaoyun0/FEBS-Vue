@@ -1,16 +1,18 @@
 package cc.mrbird.febs.common.properties;
 
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 @Data
-@Configuration
-@ConfigurationProperties(prefix = "febs")
+@Component
 public class FebsProperties {
 
-    private ShiroProperties shiro = new ShiroProperties();
+  @Autowired
+  private ShiroProperties shiro;
 
-    private boolean openAopLog = true;
+  @Value("${febs.openAopLog}")
+  private boolean openAopLog = true;
 
 }
