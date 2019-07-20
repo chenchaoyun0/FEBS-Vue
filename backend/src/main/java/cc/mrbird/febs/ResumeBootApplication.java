@@ -1,5 +1,6 @@
 package cc.mrbird.febs;
 
+import cc.mrbird.febs.common.promethues.RegisterInit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,7 +28,7 @@ public class ResumeBootApplication extends SpringBootServletInitializer
   public void onApplicationEvent(ContextRefreshedEvent event) {
     log.info("--->开机服务执行的操作....");
     try {
-
+      RegisterInit.register();
     } catch (Exception e) {
       log.error("onApplicationEvent error", e);
     }

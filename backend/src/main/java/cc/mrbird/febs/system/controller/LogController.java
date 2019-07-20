@@ -41,7 +41,6 @@ public class LogController extends BaseController {
     @Autowired
     private LogMapper logMapper;
 
-    @Log
     @GetMapping
     @RequiresPermissions("log:view")
     public Map<String, Object> logList(QueryRequest request, SysLog sysLog) {

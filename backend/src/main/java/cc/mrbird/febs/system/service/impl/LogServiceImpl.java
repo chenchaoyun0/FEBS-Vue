@@ -4,6 +4,7 @@ import cc.mrbird.febs.common.annotation.Log;
 import cc.mrbird.febs.common.domain.FebsConstant;
 import cc.mrbird.febs.common.domain.QueryRequest;
 import cc.mrbird.febs.common.utils.AddressUtil;
+import cc.mrbird.febs.common.utils.Ip2RegionUtils;
 import cc.mrbird.febs.common.utils.SortUtil;
 import cc.mrbird.febs.system.dao.LogMapper;
 import cc.mrbird.febs.system.domain.SysLog;
@@ -102,7 +103,7 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, SysLog> implements Lo
       log.setParams(params.toString());
     }
     log.setCreateTime(new Date());
-    log.setLocation(AddressUtil.getCityInfo(log.getIp()));
+    log.setLocation(Ip2RegionUtils.getCityInfo(log.getIp()));
     // 保存系统日志
     save(log);
   }

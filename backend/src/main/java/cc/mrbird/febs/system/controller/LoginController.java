@@ -174,7 +174,7 @@ public class LoginController {
         activeUser.setUsername(user.getUsername());
         activeUser.setIp(ip);
         activeUser.setToken(token.getToken());
-        activeUser.setLoginAddress(AddressUtil.getCityInfo(ip));
+        activeUser.setLoginAddress(Ip2RegionUtils.getCityInfo(ip));
 
         // zset 存储登录用户，score 为过期时间戳
         this.redisService.zadd(FebsConstant.ACTIVE_USERS_ZSET_PREFIX, Double.valueOf(token.getExipreAt()), mapper.writeValueAsString(activeUser));

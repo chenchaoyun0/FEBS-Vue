@@ -1,13 +1,37 @@
 package cc.mrbird.febs.common.utils;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import javax.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class IPUtil {
 
 	private static final String UNKNOWN = "unknown";
 
 	protected IPUtil(){
 
+	}
+
+	public static String selfHostName() {
+		try {
+			InetAddress inetAddress = InetAddress.getLocalHost();
+			return inetAddress.getHostName();
+		} catch (UnknownHostException var1) {
+			log.error("获取当前主机名出现异常", var1);
+			return "can not resolve hostname";
+		}
+	}
+
+	public static String selfHostIp() {
+		try {
+			InetAddress inetAddress = InetAddress.getLocalHost();
+			return inetAddress.getHostAddress();
+		} catch (UnknownHostException var1) {
+			log.error("获取当前主机ip出现异常", var1);
+			return "can not resolve hostname";
+		}
 	}
 
 	/**
