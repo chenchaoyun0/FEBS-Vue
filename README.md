@@ -1,10 +1,11 @@
 ### FEBS-Vue
 ![https://img.shields.io/badge/license-Apache%202.0-blue.svg?longCache=true&style=flat-square](https://img.shields.io/badge/license-Apache%202.0-blue.svg?longCache=true&style=flat-square)
-![https://img.shields.io/badge/springboot-2.1.0-yellow.svg?longCache=true&style=flat-square](https://img.shields.io/badge/springboot-2.1.0-yellow.svg?longCache=true&style=flat-square)
+![https://img.shields.io/badge/springboot-2.1.3-yellow.svg?longCache=true&style=flat-square](https://img.shields.io/badge/springboot-2.1.3-yellow.svg?longCache=true&style=flat-square)
 ![https://img.shields.io/badge/shiro-1.4.0-orange.svg?longCache=true&style=flat-square](https://img.shields.io/badge/shiro-1.4.0-orange.svg?longCache=true&style=flat-square)
 ![https://img.shields.io/badge/vue-2.5.17-brightgreen.svg?longCache=true&style=flat-square](https://img.shields.io/badge/vue-2.5.17-brightgreen.svg?longCache=true&style=flat-square)
 
 FEBS-Vue为[FEBS-Shiro](https://github.com/wuyouzhuguli/FEBS-Shiro)的前后端分离版本，前端使用Vue全家桶，组件库采用[Ant-Design-Vue](https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/)
+本项目 fork 于 wuyouzhuguli 大神的FEBS-Vue项目，在其上修改了日志功能、druid数据源、prometheus、记录浏览器系统信息等
 
 ### 项目文档
 
@@ -12,23 +13,19 @@ FEBS-Vue为[FEBS-Shiro](https://github.com/wuyouzhuguli/FEBS-Shiro)的前后端�
 
 ### 预览地址
 
-[http://febs.mrbird.cc:8081/#/login](http://febs.mrbird.cc:8081/#/login)。
+[http://www.shopbop.ink/resume-boot/#/login](http://www.shopbop.ink/resume-boot/#/login)。
 
 演示环境账号密码：
 
 账号 | 密码| 权限
 ---|---|---
-scott | 1234qwer | 注册账号，拥有查看，新增导出等权限，但不能新增用户
-jack | 1234qwer |普通账户，仅拥有所有页面查看权限
-mrbird | 多次遭人恶意删除，不再提供 |超级管理员，拥有所有增删改查权限
+chenchaoyun | 123456 | 注册账号，拥有查看，新增导出等权限，但不能新增用户
 
 本地部署账号密码：
 
 账号 | 密码| 权限
 ---|---|---
-scott | 1234qwer | 注册账号，拥有查看，新增导出等权限，但不能新增用户
-jack | 1234qwer |普通账户，仅拥有所有页面查看权限
-mrbird | 1234qwer |超级管理员，拥有所有增删改查权限
+chenchaoyun | 123456 | 注册账号，拥有查看，新增导出等权限，但不能新增用户
 
 ### 使用教程
 
