@@ -5,7 +5,7 @@
 
     <groupId>cc.mrbird</groupId>
     <artifactId>resume-boot</artifactId>
-    <version>2.0.0-release</version>
+    <version>2.0.1-release</version>
     <packaging>jar</packaging>
 
     <name>resume-boot</name>
