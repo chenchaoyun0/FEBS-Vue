@@ -6,10 +6,12 @@ import cc.mrbird.febs.common.domain.QueryRequest;
 import cc.mrbird.febs.common.exception.FebsException;
 import cc.mrbird.febs.common.utils.IPUtil;
 import cc.mrbird.febs.system.dao.LogMapper;
+import cc.mrbird.febs.system.domain.LoginLog;
 import cc.mrbird.febs.system.domain.SysLog;
 import cc.mrbird.febs.system.domain.vo.LookResumeReq;
 import cc.mrbird.febs.system.domain.vo.LookResumeResp;
 import cc.mrbird.febs.system.service.LogService;
+import cc.mrbird.febs.system.service.LoginLogService;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -37,6 +39,9 @@ public class LogController extends BaseController {
 
     @Autowired
     private LogService logService;
+
+    @Autowired
+    private LoginLogService loginLogService;
 
     @Autowired
     private LogMapper logMapper;
@@ -112,6 +117,12 @@ public class LogController extends BaseController {
         // 总访问人数
         long totalVisitorCount=logMapper.selectTotalVisitorCount();
         resp.setTotalVisitorCount(totalVisitorCount);
+
+        //记录到日志
+        // 保存登录记录
+        LoginLog loginLog = new LoginLog();
+        loginLog.setUsername("visitor");
+        this.loginLogService.saveLoginLog(loginLog);
 
         resp.setMsg("操作成功");
         log.info("查看网站主页 resp:{}", JSONObject.toJSONString(resp));

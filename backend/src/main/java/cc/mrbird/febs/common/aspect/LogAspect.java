@@ -69,7 +69,7 @@ public class LogAspect {
       }
 
       SysLog log = new SysLog();
-      log.setUsername(StringUtils.isBlank(username) ? "unknown" : username);
+      log.setUsername(StringUtils.isBlank(username) ? "visitor" : username);
       log.setIp(ip);
       log.setTime(time);
 
